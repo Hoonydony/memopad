@@ -1,2 +1,2 @@
-yarn-*.html linguist-vendored
-yarn-*.TeX linguist-vendored
+*.html linguist-vendored
+*.tex linguist-vendored
