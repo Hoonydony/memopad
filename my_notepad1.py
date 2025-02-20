@@ -8,18 +8,18 @@ class Notepad:
         self.root.title("Look_at_me")
         self.root.geometry("800x600")
 
-        # 메뉴 바 생성
+        # Menu bar generation
         self.menu_bar = tk.Menu(self.root)
         self.root.config(menu=self.menu_bar)
 
-        # 사용자 정의 메뉴 추가
+        # custom menu 
         self.custom_menu = tk.Menu(self.menu_bar, tearoff=0)
         self.custom_menu.add_command(label="About Look_at_me", command=self.show_about)
         self.custom_menu.add_command(label="Save Tab", command=self.save_file)
         self.custom_menu.add_command(label="Add Tab", command=self.new_tab)
         self.menu_bar.add_cascade(label="Look_at_me", menu=self.custom_menu)
 
-        # 툴바 생성
+        # tool bar
         self.toolbar = tk.Frame(self.root, bd=1, relief=tk.RAISED)
         self.toolbar.pack(side=tk.TOP, fill=tk.X)
 
@@ -38,11 +38,11 @@ class Notepad:
         save_button = tk.Button(self.toolbar, text="Save", command=self.save_file)
         save_button.pack(side=tk.RIGHT, padx=2, pady=2)
 
-        # 탭 추가 버튼 툴바에 추가
+        # Add Tab button on the tool bar
         add_tab_button = tk.Button(self.toolbar, text="+", command=self.new_tab)
         add_tab_button.pack(side=tk.RIGHT, padx=2, pady=2)
 
-        # 탭 프레임 생성
+        # Tab Frame
         self.tab_frame = tk.Frame(self.root)
         self.tab_frame.pack(side=tk.TOP, fill=tk.X)
 
@@ -50,7 +50,7 @@ class Notepad:
         self.notebook.pack(side=tk.LEFT, fill=tk.X, expand=True)
         self.notebook.bind("<Double-Button-1>", self.rename_tab)
 
-        # 메인 프레임 생성
+        # Main Frame
         self.main_frame = tk.Frame(self.root)
         self.main_frame.pack(fill=tk.BOTH, expand=True)
 
@@ -58,7 +58,7 @@ class Notepad:
         self.current_font = font.Font(family="Cambria Math", size=25)
         self.new_tab()
 
-        # 단축키 설정
+        # Short-cut key
         self.root.bind("<Command-z>", self.undo)
         self.root.bind("<Command-a>", self.select_all)
         self.root.bind("<Command-b>", self.toggle_bold)
@@ -142,13 +142,13 @@ class Notepad:
         new_size = simpledialog.askinteger("Font Size", "Enter new font size:")
 
         if new_size:
-            # 선택된 텍스트가 있을 경우, 해당 텍스트에만 폰트 크기 적용
+            # applied in case of only selected texts
             if text_area.tag_ranges(tk.SEL):
                 start, end = text_area.index(tk.SEL_FIRST), text_area.index(tk.SEL_LAST)
                 text_area.tag_configure(f"size_{new_size}", font=(self.current_font.actual("family"), new_size))
                 text_area.tag_add(f"size_{new_size}", start, end)
             else:
-                # 선택된 텍스트가 없을 경우, 탭 전체 폰트 크기 변경
+                # applied in case of no selected texts
                 self.current_font.configure(size=new_size)
 
     def _toggle_style(self, style):
