@@ -1,2 +1,2 @@
-*.html linguist-detectable=false
-*.TeX linguist-detectable=false
+yarn-*.html linguist-vendored
+yarn-*.TeX linguist-vendored
