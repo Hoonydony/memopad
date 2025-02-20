@@ -1,0 +1,3 @@
+([('my_notepad1',
+   '/Users/myunghoon/Documents/study/dist/my_notepad1',
+   'EXECUTABLE')],)
